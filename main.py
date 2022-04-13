@@ -5,7 +5,7 @@ from flask_uploads import configure_uploads, UploadSet, IMAGES
 from color_pallete import pallete_finder
 from copy_image import copy
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 
 app.config['SECRET_KEY'] = 'randomstring'
 app.config["UPLOADED_IMAGES_DEST"] = 'uploads'
@@ -28,8 +28,7 @@ def index():
 
         pallete = pallete_finder(f'uploads/{filename}')
         copy(filename)
-
-        return render_template('color_pallete.html', pallete=pallete, filename=filename)
+        return render_template('color_pallete.html', pallete=pallete, name=filename)
 
     return render_template('index.html', form=form)
 

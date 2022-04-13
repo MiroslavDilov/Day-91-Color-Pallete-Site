@@ -3,12 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        .color-box {
+            width: 100px;
+            height: 50px;
+            display: inline-block;
+        }
+    </style>
 </head>
 <body>
     <a href="{{url_for('index')}}">Try another Image</a>
-    <img src="{{ url_for('static', filename=filename) }}" alt="Image">
+    <br>
+    <img src="{{ url_for('static', filename='Sburtner_PumaCave.jpg')}}"  alt="">
+
     {% for color in pallete: %}
-        <div>{{ color }}</div>
+        <div>
+            <div class="color-box" style="background-color: rgb{{ color }}"></div>
+            {{ color }}
+        </div>
     {% endfor %}
 </body>
 </html>
